@@ -3,11 +3,14 @@
 from scripts import scripts
 from secrets import APP_KEY, APP_SECRET, OAUTH_TOKEN, OAUTH_TOKEN_SECRET
 
-from twython import TwythonStreamer
-from time import sleep
+from twython import TwythonStreamer, Twython
+from time import sleep, strftime
+from subprocess import Popen
+import os
 import math
 import requests
 import json
+import thread
 
 #Shannon Entropy -> minimum bits per symbol -> * message length = minimum bits needed to encode message
 def InfoSize(st):
@@ -51,10 +54,10 @@ class MyStreamer(TwythonStreamer):
          tweet_screen_name = data['user']['screen_name']
         
          if 'SNAP' in text_upper:
-           print("take photo")
-           return 
-            #Take photo
-         
+            cmd=['./snap.py', tweet_id, tweet_screen_name]
+ 	    Popen(cmd)
+            return
+ 
          cmds=list()
          for script_name in scripts:
             if script_name in text_upper:
@@ -90,5 +93,7 @@ class MyStreamer(TwythonStreamer):
 
 stream = MyStreamer(APP_KEY, APP_SECRET,
                     OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
+twitter = Twython(APP_KEY, APP_SECRET,
+                  OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
 stream.user()
 
