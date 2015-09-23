@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 from subprocess import Popen, PIPE, STDOUT
-from time import time, sleep
+from time import time
 import json
 
 jrk = Popen(['sudo', '/home/pi/pololu/pololu-usb-sdk/Jrk/JrkCmd/JrkCmd'], stdin=PIPE, stdout=PIPE)
