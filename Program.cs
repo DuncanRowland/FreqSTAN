@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Text;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
-using System.Text.RegularExpressions;
-using System.Threading;
-using Pololu.Jrk;
 using Pololu.UsbWrapper;
 
 namespace Pololu.Jrk.JrkCmd
