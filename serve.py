@@ -4,7 +4,7 @@ from subprocess import Popen, PIPE, STDOUT
 from time import time
 import json
 
-jrk = Popen(['sudo', '/home/pi/pololu/pololu-usb-sdk/Jrk/JrkCmd/JrkCmd'], stdin=PIPE, stdout=PIPE)
+jrk = Popen(['sudo', '/home/pi/pololu-usb-sdk/Jrk/JrkCmd/JrkCmd'], stdin=PIPE, stdout=PIPE)
 
 cmds = list()
 
