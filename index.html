@@ -5,28 +5,122 @@
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
    </head>
    <body>
+
+<script>
+function loadOpen0() {
+   document.getElementById("data").value='\
+[\n\
+{"id":"0", "target":100}\n\
+]\
+';
+}
+function loadHalfOpen0() {
+   document.getElementById("data").value='\
+[\n\
+{"id":"0", "target":50}\n\
+]\
+';
+}
+function loadClose0() {
+   document.getElementById("data").value='\
+[\n\
+{"id":"0", "target":0}\n\
+]\
+';
+}
+function loadOpenAll() {
+   document.getElementById("data").value='\
+[\n\
+{"id":"0", "target":100},\n\
+{"id":"1", "target":100},\n\
+{"id":"2", "target":100},\n\
+{"id":"3", "target":100},\n\
+{"id":"4", "target":100},\n\
+{"id":"5", "target":100},\n\
+{"id":"6", "target":100},\n\
+{"id":"7", "target":100},\n\
+{"id":"8", "target":100},\n\
+{"id":"9", "target":100}\n\
+]\
+';
+}
+function loadHalfOpenAll() {
+   document.getElementById("data").value='\
+[\n\
+{"id":"0", "target":50},\n\
+{"id":"1", "target":50},\n\
+{"id":"2", "target":50},\n\
+{"id":"3", "target":50},\n\
+{"id":"4", "target":50},\n\
+{"id":"5", "target":50},\n\
+{"id":"6", "target":50},\n\
+{"id":"7", "target":50},\n\
+{"id":"8", "target":50},\n\
+{"id":"9", "target":50}\n\
+]\
+';
+}
+function loadCloseAll() {
+   document.getElementById("data").value='\
+[\n\
+{"id":"0", "target":0},\n\
+{"id":"1", "target":0},\n\
+{"id":"2", "target":0},\n\
+{"id":"3", "target":0},\n\
+{"id":"4", "target":0},\n\
+{"id":"5", "target":0},\n\
+{"id":"6", "target":0},\n\
+{"id":"7", "target":0},\n\
+{"id":"8", "target":0},\n\
+{"id":"9", "target":0}\n\
+]\
+';
+}
+function loadOpenCloseAllSeq() {
+   document.getElementById("data").value='\
+[\n\
+{"id":"0", "target":100, "pause": 1},\n\
+{"id":"1", "target":100, "pause": 2},\n\
+{"id":"2", "target":100, "pause": 3},\n\
+{"id":"3", "target":100, "pause": 4},\n\
+{"id":"4", "target":100, "pause": 5},\n\
+{"id":"5", "target":100, "pause": 6},\n\
+{"id":"6", "target":100, "pause": 7},\n\
+{"id":"7", "target":100, "pause": 8},\n\
+{"id":"8", "target":100, "pause": 9},\n\
+{"id":"9", "target":100, "pause": 10},\n\
+{"id":"0", "target":0, "pause": 4},\n\
+{"id":"1", "target":0, "pause": 5},\n\
+{"id":"2", "target":0, "pause": 6},\n\
+{"id":"3", "target":0, "pause": 7},\n\
+{"id":"4", "target":0, "pause": 8},\n\
+{"id":"5", "target":0, "pause": 9},\n\
+{"id":"6", "target":0, "pause": 10},\n\
+{"id":"7", "target":0, "pause": 11},\n\
+{"id":"8", "target":0, "pause": 12},\n\
+{"id":"9", "target":0, "pause": 13}\n\
+]\
+';
+}
+</script>
+
       <center>
          <p>
             <h4>Motor Commands (JSON)</h4>
             <form method="post" action="">
-               <textarea name="data" cols="40" rows="10"></textarea>
+               <textarea id="data" name="data" cols="80" rows="20"></textarea>
                <br>
                <input type="submit" value="Send"/>
             </form>
          </p>
+<input type="button" value="Open 0" onclick="loadOpen0();" />
+<input type="button" value="Half Open 0" onclick="loadHalfOpen0();" />
+<input type="button" value="Close 0" onclick="loadClose0();" />
+<br>
+<input type="button" value="Open All" onclick="loadOpenAll();" />
+<input type="button" value="Half Open All" onclick="loadHalfOpenAll();" />
+<input type="button" value="Close All" onclick="loadCloseAll();" />
+<input type="button" value="Test All" onclick="loadOpenCloseAllSeq();" />
       </center>
-<pre>
-[
-{"id":"0", "target":3000, "pause":0, "delay":10},
-{"id":"0", "target":3200, "pause":1},
-{"id":"0", "target":3000, "pause":2}
-]
-
-[
-{"id":"0", "target":3500, "delay":0}
-]
-
-curl -d data="[{\"id\":\"0\",+\"target\":3000}]" http://10.18.12.98:43210
-</pre>
    </body>
 </html>

@@ -18,7 +18,7 @@ def isStopped(id):
       return False;
    jrk.stdin.write(id+'\n')
    c = jrk.stdout.readline()
-   return c == '0\n'
+   return c == '0\n' or c == '-1\n'
 
 def delaysExpired(cmd):
    now = time()
