@@ -51,7 +51,7 @@ class MyStreamer(TwythonStreamer):
                if(id>1):
                   break
 
-         url="http://localhost:43210"
+         url="http://localhost:8080"
          payload = {'data':json.dumps(cmds)}
          print(payload)
          requests.post(url, data=payload)

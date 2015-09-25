@@ -15,7 +15,7 @@ class MyStreamer(TwythonStreamer):
             print(text)
             s=InfoSize(text)
 
-            url="http://localhost:43210"
+            url="http://localhost:8080"
             id=0
             bits = numberToBase(s,2)
             bits.reverse()
