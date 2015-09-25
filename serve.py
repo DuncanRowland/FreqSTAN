@@ -8,7 +8,7 @@ jrk = Popen(['sudo', '/home/pi/pololu-usb-sdk/Jrk/JrkCmd/JrkCmd'], stdin=PIPE, s
 
 cmds = list()
 
-Ids = {'0','1'}
+Ids = {'0','1','2','3','4','5','6','7','8','9'}
 Stopped = set()
 StoppedAt = dict()
 Pending = list()

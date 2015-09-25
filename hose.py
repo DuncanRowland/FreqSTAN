@@ -21,9 +21,9 @@ class MyStreamer(TwythonStreamer):
             bits.reverse()
             for bit in bits:
                if bit==0:
-                  cmd = [{'id':str(id),'target':2500}]
+                  cmd = [{'id':str(id),'target':0}]
                else:
-                  cmd = [{'id':str(id),'target':3500}]
+                  cmd = [{'id':str(id),'target':100}]
                payload = {'data':json.dumps(cmd)}
                requests.post(url, data=payload)
                id+=1
@@ -32,8 +32,8 @@ class MyStreamer(TwythonStreamer):
 
     def on_error(self, status_code, data):
         print(status_code)
-        print("Rate limited, sleeping for 3000")
-        sleep(3000)
+        print("Rate limited, sleeping for 600")
+        sleep(600)
 
 stream = MyStreamer(APP_KEY, APP_SECRET,
                     OAUTH_TOKEN, OAUTH_TOKEN_SECRET)

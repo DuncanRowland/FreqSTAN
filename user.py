@@ -44,9 +44,9 @@ class MyStreamer(TwythonStreamer):
             cmds = list()
             for bit in bits:
                if bit==0:
-                  cmds.append({'id':str(id),'target':2500})
+                  cmds.append({'id':str(id),'target':0})
                else:
-                  cmds.append({'id':str(id),'target':3500})
+                  cmds.append({'id':str(id),'target':100})
                id+=1
                if(id>1):
                   break
@@ -58,8 +58,8 @@ class MyStreamer(TwythonStreamer):
 
     def on_error(self, status_code, data):
         print(status_code)
-        print("Rate limited, sleeping for 3000")
-        sleep(3000)
+        print("Rate limited, sleeping for 600")
+        sleep(600)
 
 stream = MyStreamer(APP_KEY, APP_SECRET,
                     OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
