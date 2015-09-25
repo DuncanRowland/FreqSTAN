@@ -94,18 +94,21 @@ class requestHandler(tornado.web.RequestHandler):
    def post(self):
       self.write(open('./index.html',"r").read())
       data = self.get_argument('data')
-      obj = json.loads(data)
-      if len(obj)==1:
-         if len(cmds)<10:
-            cmds.append(obj)
-         #Otherwise lose all single commands (but keep command groups)
-      else:
-         i=0
-         for c in cmds:
-            if len(c)==1:
-               break
-            i+=1
-         cmds.insert(i,obj)
+      objlist = json.loads(data)
+      if isinstance(objlist[0],dict):
+         objlist=[objlist]
+      for obj in objlist:
+         if len(obj)==1:
+            if len(cmds)<10:
+               cmds.append(obj)
+            #Otherwise lose all single commands (but keep command groups)
+         else:
+            i=0
+            for c in cmds:
+               if len(c)==1:
+                  break
+               i+=1
+            cmds.insert(i,obj)
 
 application = tornado.web.Application([
    (r'/', requestHandler),
