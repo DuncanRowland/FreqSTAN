@@ -16,7 +16,8 @@ namespace Pololu.Jrk.JrkCmd
             while((line=Console.ReadLine())!=null) {
                string[] p = line.Split();
                if(p.Length==1) {
-                  int id = Convert.ToInt32(p[0]);
+                  ushort id = Convert.ToUInt16(p[0]);
+                  if(id>=list.Count){Console.WriteLine(-1);continue;}; 
                   jrk = new Jrk(list[id]);
                   double current = 0.0;
                   for(int i=0; i<100; i++) 
@@ -25,8 +26,10 @@ namespace Pololu.Jrk.JrkCmd
                   jrk.disconnect();
                }
                if(p.Length==2) {
-                  int id = Convert.ToInt32(p[0]);
-                  ushort v = Convert.ToUInt16(p[1]);
+                  ushort id = Convert.ToUInt16(p[0]);
+                  if(id>=list.Count)continue;
+                  ushort v = Convert.ToUInt16(Convert.ToDouble(p[1])*40.95);
+                  if(v>4095)v=4095;
                   jrk = new Jrk(list[id]);
                   jrk.setTarget(v);
                   jrk.disconnect();
