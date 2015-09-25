@@ -116,7 +116,7 @@ application = tornado.web.Application([
 
 if __name__ == "__main__":
    http_server = tornado.httpserver.HTTPServer(application)
-   http_server.listen(43210) #Use a sensible port number here*
+   http_server.listen(8080)
    tornado.ioloop.PeriodicCallback(processMotors, 1000).start()
    loop=tornado.ioloop.IOLoop.instance()
    loop.start()
