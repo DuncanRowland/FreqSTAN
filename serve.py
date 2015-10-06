@@ -8,17 +8,26 @@ jrk = Popen(['sudo', '/home/pi/pololu-usb-sdk/Jrk/JrkCmd/JrkCmd'], stdin=PIPE, s
 
 cmds = list()
 
-Ids = {'0','1','2','3','4','5','6','7','8','9'}
+Ids = {'0','1','2','3','4','5','6','7','8','9','10','11','12','13'}
 Stopped = set()
 StoppedAt = dict()
+StoppedAskCount = dict()
 Pending = list()
 
 def isStopped(id):
    if id in Pending:
       return False;
-   jrk.stdin.write(id+'\n')
-   c = jrk.stdout.readline()
-   return c == '0\n' or c == '-1\n'
+   StoppedAskCount[id] = StoppedAskCount.get(id,0)+1
+   r = False;
+   if StoppedAskCount[id] == 10: #10 Seconds max time to get to target 
+      r = True
+   else:
+      jrk.stdin.write(id+'\n')
+      c = jrk.stdout.readline()
+      r = c == '0\n' or c == '-1\n'
+   if r:
+      StoppedAskCount[id] = 0
+   return r
 
 def delaysExpired(cmd):
    now = time()
