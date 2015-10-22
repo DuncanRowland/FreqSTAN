@@ -108,6 +108,11 @@ class requestHandlerTOFF(tornado.web.RequestHandler):
       test = Popen(['sudo', 'killall','loopall.sh'], stdin=PIPE, stdout=PIPE)
       self.write(open('./index.html',"r").read())
 
+class requestHandlerREBOOT(tornado.web.RequestHandler):
+   def get(self):
+      test = Popen(['sudo', 'reboot'], stdin=PIPE, stdout=PIPE)
+      self.write(open('./index.html',"r").read())
+
 class requestHandler(tornado.web.RequestHandler):
    def get(self):
       self.write(open('./index.html',"r").read())
@@ -133,6 +138,7 @@ class requestHandler(tornado.web.RequestHandler):
 application = tornado.web.Application([
    (r'/teston', requestHandlerTON),
    (r'/testoff', requestHandlerTOFF),
+   (r'/reboot', requestHandlerREBOOT),
    (r'/', requestHandler),
 ])
 
