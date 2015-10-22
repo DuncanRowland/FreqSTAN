@@ -48,8 +48,6 @@ class MyStreamer(TwythonStreamer):
                else:
                   cmds.append({'id':str(id),'target':100})
                id+=1
-               if(id>1):
-                  break
 
          url="http://localhost:8080"
          payload = {'data':json.dumps(cmds)}

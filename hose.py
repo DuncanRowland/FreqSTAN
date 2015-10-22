@@ -27,8 +27,6 @@ class MyStreamer(TwythonStreamer):
                payload = {'data':json.dumps(cmd)}
                requests.post(url, data=payload)
                id+=1
-               if(id>1):
-                  break
 
     def on_error(self, status_code, data):
         print(status_code)
