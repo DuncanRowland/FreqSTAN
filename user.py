@@ -14,7 +14,7 @@ class MyStreamer(TwythonStreamer):
     def on_success(self, data):
       if ('id' in data) and \
          ('in_reply_to_screen_name' in data) and \
-         (str(data['in_reply_to_screen_name']).upper() == 'PILAMP') and \
+         (str(data['in_reply_to_screen_name']).upper() == 'THESTANPROJECT') and \
          ('user' in data) and \
          ('screen_name' in data['user']) and \
          ('text' in data):
