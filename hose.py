@@ -37,6 +37,6 @@ class MyStreamer(TwythonStreamer):
 
 stream = MyStreamer(APP_KEY, APP_SECRET,
                     OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
-stream.statuses.filter(track='#freq')
+stream.statuses.filter(track='#freq15')
 #stream.user()
 
