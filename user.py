@@ -51,7 +51,7 @@ class MyStreamer(TwythonStreamer):
 
          url="http://localhost:8080"
          payload = {'data':json.dumps(cmds)}
-         print(payload)
+#         print(payload)
          requests.post(url, data=payload)
 
     def on_error(self, status_code, data):

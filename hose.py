@@ -12,7 +12,7 @@ class MyStreamer(TwythonStreamer):
     def on_success(self, data):
         if 'text' in data:
             text = data['text'].encode('utf-8')
-            print(text)
+#            print(text)
             s=InfoSize(text)
 
             url="http://localhost:8080"
@@ -25,6 +25,7 @@ class MyStreamer(TwythonStreamer):
                else:
                   cmd = [{'id':str(id),'target':100}]
                payload = {'data':json.dumps(cmd)}
+#               print(payload)
                requests.post(url, data=payload)
                id+=1
 
