@@ -18,6 +18,7 @@ def isStopped(id):
    if id in Pending:
       return False;
    StoppedAskCount[id] = StoppedAskCount.get(id,0)+1
+   print(str(id)+"-"+str(StoppedAskCount[id]))
    r = False;
    if StoppedAskCount[id] == 10: #10 Seconds max time to get to target 
       r = True
@@ -97,6 +98,16 @@ import tornado.httpserver
 import tornado.ioloop
 import tornado.web
 
+class requestHandlerTON(tornado.web.RequestHandler):
+   def get(self):
+      test = Popen(['sudo', '/home/pi/pololu-usb-sdk/Jrk/JrkCmd/loopall.sh'], stdin=PIPE, stdout=PIPE)
+      self.write(open('./index.html',"r").read())
+
+class requestHandlerTOFF(tornado.web.RequestHandler):
+   def get(self):
+      test = Popen(['sudo', 'killall','loopall.sh'], stdin=PIPE, stdout=PIPE)
+      self.write(open('./index.html',"r").read())
+
 class requestHandler(tornado.web.RequestHandler):
    def get(self):
       self.write(open('./index.html',"r").read())
@@ -120,6 +131,8 @@ class requestHandler(tornado.web.RequestHandler):
             cmds.insert(i,obj)
 
 application = tornado.web.Application([
+   (r'/teston', requestHandlerTON),
+   (r'/testoff', requestHandlerTOFF),
    (r'/', requestHandler),
 ])
 

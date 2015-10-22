@@ -23,10 +23,10 @@ class MyStreamer(TwythonStreamer):
          tweet_id = str(data['id'])
          tweet_screen_name = data['user']['screen_name']
         
-         if 'SNAP' in text_upper:
-            cmd=['./snap.py', tweet_id, tweet_screen_name]
- 	    Popen(cmd)
-            return
+#         if 'SNAP' in text_upper:
+#            cmd=['./snap.py', tweet_id, tweet_screen_name]
+# 	    Popen(cmd)
+#            return
  
          cmds=list()
          for script_name in scripts:

@@ -14,7 +14,4 @@ source ../ENV/bin/activate
 ./serve.py &
 ./user.py &
 ./hose.py &
-./fswebcam.sh
-./fswebcam.sh
-./fswebcam.sh
 
