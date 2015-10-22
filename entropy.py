@@ -18,7 +18,7 @@ def InfoSize(st):
    mbps = int(math.ceil(ent))
    return mbps*len(stList)
 
-#Convert to base in list form, fix to 13 digits (by looping)
+#Convert to base in list form, fix to 14 digits (by looping)
 def numberToBase(n, b):
     if n == 0:
         digits=[0]
@@ -27,7 +27,7 @@ def numberToBase(n, b):
        while n:
            digits.append(int(n % b))
            n /= b
-    while len(digits)<13:
-       digits+=digits[0:13-len(digits)]
+    while len(digits)<14:
+       digits+=digits[0:14-len(digits)]
     return digits[::-1]
  
