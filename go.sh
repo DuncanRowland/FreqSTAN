@@ -12,6 +12,6 @@ sudo /etc/init.d/ntp start
 cd /home/pi/pinchon
 source ../ENV/bin/activate
 ./serve.py &
-./user.py &
-./hose.py &
+(./user.py;sudo reboot)&
+(./hose.py;sudo reboot)&
 
